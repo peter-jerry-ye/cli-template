@@ -7,7 +7,7 @@ pub fn run() -> Result[Unit, Unit] {
     } catch {
       error => {
         result = Err(())
-        @io.println("Error \{error}", stream=@io.stderr).await!!()
+        @io.println_sync!("Error \{error}", stream=@io.stderr)
       }
     }
   })
@@ -19,5 +19,5 @@ pub fn run() -> Result[Unit, Unit] {
 ///|
 /// User should change this function to do what they want
 async fn top() -> Unit! {
-  @io.println("Hello, world!").await!!()
+  @io.println!!("Hello, world!")
 }
