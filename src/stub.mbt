@@ -3,7 +3,7 @@ pub fn run() -> Result[Unit, Unit] {
   let mut result = Ok(())
   @promise.spawn(async fn(_defer) {
     try {
-      top!!()
+      top!()
     } catch {
       error => {
         result = Err(())
@@ -19,5 +19,5 @@ pub fn run() -> Result[Unit, Unit] {
 ///|
 /// User should change this function to do what they want
 async fn top() -> Unit! {
-  @io.println!!("Hello, world!")
+  @io.println!("Hello, world!")
 }
