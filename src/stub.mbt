@@ -2,12 +2,10 @@
 pub fn run() -> Result[Unit, Unit] {
   let mut result = Ok(())
   @promise.spawn(async fn(_defer) {
-    try {
-      top!()
-    } catch {
+    top() catch {
       error => {
         result = Err(())
-        @io.println_sync!("Error \{error}", stream=@io.stderr)
+        @io.println_sync("Error \{error}", stream=@io.stderr)
       }
     }
   })
@@ -18,6 +16,6 @@ pub fn run() -> Result[Unit, Unit] {
 
 ///|
 /// User should change this function to do what they want
-async fn top() -> Unit! {
-  @io.println!("Hello, world!")
+async fn top() -> Unit raise {
+  @io.println("Hello, world!")
 }
