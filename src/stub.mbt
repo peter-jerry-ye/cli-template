@@ -1,7 +1,8 @@
-///| Run the program.
+///|
+/// Run the program.
 pub fn run() -> Result[Unit, Unit] {
   let mut result = Ok(())
-  @promise.spawn(async fn(_defer) {
+  @promise.spawn(async fn() {
     top() catch {
       error => {
         result = Err(())
@@ -16,6 +17,6 @@ pub fn run() -> Result[Unit, Unit] {
 
 ///|
 /// User should change this function to do what they want
-async fn top() -> Unit raise {
+async fn top() -> Unit {
   @io.println("Hello, world!")
 }
