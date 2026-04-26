@@ -1,8 +1,7 @@
 import {
   "peter-jerry-ye/wasi-imports/ffi" @ffi,
-  "peter-jerry-ye/io/io",
-  "peter-jerry-ye/async/loop",
-  "peter-jerry-ye/async/promise",
+  "peter-jerry-ye/wasi-imports/interface/wasi/cli/stdout" @stdout,
+  "peter-jerry-ye/wasi-imports/interface/wasi/io/streams",
 }
 
 options(

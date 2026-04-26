@@ -1,22 +1,17 @@
 ///|
 /// Run the program.
 pub fn run() -> Result[Unit, Unit] {
-  let mut result = Ok(())
-  @promise.spawn(async fn() {
-    top() catch {
-      error => {
-        result = Err(())
-        @io.println_sync("Error \{error}", stream=@io.stderr)
-      }
-    }
-  })
-  |> ignore
-  @io.event_loop.run()
-  result
+  top()
 }
 
 ///|
 /// User should change this function to do what they want
-async fn top() -> Unit {
-  @io.println("Hello, world!")
+fn top() -> Result[Unit, Unit] {
+  let stdout = @stdout.get_stdout()
+  let result = stdout.blocking_write_and_flush(b"Hello, world!\n".to_fixedarray())
+  stdout.drop()
+  match result {
+    Ok(_) => Ok(())
+    Err(_) => Err(())
+  }
 }
