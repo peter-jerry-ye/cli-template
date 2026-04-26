@@ -1,0 +1,19 @@
+import {
+  "peter-jerry-ye/wasi-imports/ffi" @ffi,
+  "peter-jerry-ye/wasi-imports/interface/wasi/cli/stdout" @stdout,
+  "peter-jerry-ye/wasi-imports/interface/wasi/io/streams",
+}
+
+options(
+  link: {
+    "wasm": {
+      "export-memory-name": "memory",
+      "exports": [
+        "cabi_realloc:cabi_realloc",
+        "wasmExportRun:wasi:cli/run@0.2.0#run",
+      ],
+      "heap-start-address": 16,
+    },
+  },
+  supported_targets: [ "wasm" ],
+)
