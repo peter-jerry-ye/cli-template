@@ -8,7 +8,9 @@ pub fn run() -> Result[Unit, Unit] {
 /// User should change this function to do what they want
 fn top() -> Result[Unit, Unit] {
   let stdout = @stdout.get_stdout()
-  let result = stdout.blocking_write_and_flush(b"Hello, world!\n".to_fixedarray())
+  let result = stdout.blocking_write_and_flush(
+    b"Hello, world!\n".to_fixedarray(),
+  )
   stdout.drop()
   match result {
     Ok(_) => Ok(())

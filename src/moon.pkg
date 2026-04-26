@@ -15,4 +15,5 @@ options(
       "heap-start-address": 16,
     },
   },
+  supported_targets: [ "wasm" ],
 )
